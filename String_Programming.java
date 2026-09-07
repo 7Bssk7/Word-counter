@@ -3,6 +3,9 @@
  * each word, and for each word outputs its characters number, the number of vowels in it, and the word spelled backwards
  * working with Javadoc.
  * @author Akrhip Finski
+ * Course: CS-49J Section 02
+ * Title: String Programming
+ * Date: 09/06/2026
  */
 
 import java.util.Scanner;
@@ -46,9 +49,12 @@ public class String_Programming{
     public void wordProcessing(String str){
         System.out.println("The phrase: " + str);
         int word_count = 0;
+        //List of all vowels
         String vowels = "aeiouyAEIOUY ";
+        //Tracks if a character is a part of the word or not
         boolean inWord = false;
 
+        // This loop counts the number of words in the phrase
         for(int i = 0; i < str.length(); ++i){
             if( ( (str.charAt(i) >= 'A') && (str.charAt(i) <= 'Z')) || ((str.charAt(i) >= 'a') && (str.charAt(i) <= 'z'))){
                 inWord = true;
@@ -60,17 +66,21 @@ public class String_Programming{
                 inWord = false;
             }
         }
+        // If a phrase ends on a letter, makes sure last word is counted
         if(inWord){
             word_count += 1;
         }
 
+        // Resets inWord for the next loop
         inWord = false;
 
         System.out.println("The total number of words is: " + word_count);
         System.out.println("");
 
+        // This loop puts each word from the phrase into an array
         String[] words = new String[word_count];
         int index = 0;
+        // I used StringBuilder to copy each word character by character
         StringBuilder st = new StringBuilder();
 
         for(int i = 0; i < str.length(); ++i){
@@ -87,17 +97,22 @@ public class String_Programming{
                 inWord = false;
             }
         }
+        // Again this makes sure that if the phrase ends on the letter, last word is copied into an array
         if(inWord){          
             words[index] = st.toString();
             index += 1;
         }
+        // Outputs all words from the phrase
         System.out.println("The list of words are:");
         for(String word : words){
             System.out.println("* " + word);
         }
 
+        //This loop outputs number of character, number of vowels and reversed version of each word from the phrase
         for(String word : words){
             int vowels_number = 0;
+
+            // This loop counts vowels in the word
             for(char ch: word.toCharArray()){
                 if(vowels.indexOf(ch) != -1){
                     vowels_number += 1;
@@ -105,12 +120,15 @@ public class String_Programming{
 
             }
             System.out.println("The word: \"" + word + "\" has " + word.length() + " characters.");
+            // This if statement makes sure that if there is 1 vowel in the word, "vowel" is printed
             if(vowels_number == 1){
                 System.out.println("        * There is " + vowels_number + " vowel in this word.");
             }
+            // This else statement makes sure that if there is 1+ vowels in the word, "vowels" is printed
             else{
                 System.out.println("        * There are " + vowels_number + " vowels in this word.");
             }
+            // Outputs word in a reversed order
             StringBuilder stReverse = new StringBuilder(word);
             System.out.println("        * The word spelled backwards: " + stReverse.reverse());
         }
