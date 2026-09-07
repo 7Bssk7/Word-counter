@@ -1,12 +1,27 @@
+/**
+ * This is a word counting program that takes a phrase entered by the user and shows the number of words, outputs
+ * each word, and for each word outputs its characters number, the number of vowels in it, and the word spelled backwards
+ * working with Javadoc.
+ * @author Akrhip Finski
+ */
+
 import java.util.Scanner;
 
 public class String_Programming{
+
+     /**
+     * This method is the entry point.
+     * It asks the user for a phrase, passes it to wordProcessing() method, and then asks user
+     * (using menu() method) if they want to enter another phrase. The program continues to run until the user says "no"
+     * @param args A String type array variable for holding command line options
+     */
     public static void main(String[] args) {
 
         boolean check = true;
         String_Programming user = new String_Programming();
         Scanner input = new Scanner(System.in);
 
+        // Makes sure progrma runs one to N times
         do{
             System.out.println("Please enter a phrase:");
             String phrase = input.nextLine();
@@ -23,6 +38,11 @@ public class String_Programming{
 
     }
 
+    /**
+     * This method has a phrase as an argument and counts the number of words in the phrase, outputs each
+     * word, and for each word outputs the number of characters, the number of vowels, and the word spelled backwards
+     * @param str The phrase entered by the user to be analyzed.
+     */
     public void wordProcessing(String str){
         System.out.println("The phrase: " + str);
         int word_count = 0;
@@ -99,12 +119,20 @@ public class String_Programming{
 
     }
 
+    /**
+     * This method asks the user if they would like to enter another phrase, and keeps asking until it receives a
+     * valid "yes" or "no" answer
+     * @param input The Scanner object used to read users input from the console.
+     * @return true if the user answered "yes", false if the user answered "no" (stops the program).
+     */
     public boolean menu(Scanner input){
         System.out.println("Would you like to enter another phrase(yes or no):");
         String user_input = input.nextLine();
 
         while(!(user_input.equalsIgnoreCase("Yes")) && !(user_input.equalsIgnoreCase("No"))){
             System.out.println("Invalid input, please try again!");
+            System.out.println("");
+            System.out.println("Would you like to enter another phrase(yes or no):");
 
             user_input = input.nextLine();
 
